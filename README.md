@@ -17,17 +17,18 @@ and has not been pushed or connected to GitHub.
 
 The retained supervised run proved the following implementation facts:
 
-* EDK2 `OvmfPkg/Bhyve/BhyveX64.dsc`, X64, RELEASE, GCC5, at commit
-  `d46aa46c8361194521391aa581593e556c707c6e`, with the isolated
-  `patches/edk2-known-good-baseline-dxe.patch`;
+* EDK2 `edk2-stable202508` / `OvmfPkg/Bhyve/BhyveX64.dsc`, X64, RELEASE,
+  GCC5, at commit `d46aa46c8361194521391aa581593e556c707c6e`, with the
+  isolated `patches/edk2-known-good-baseline-dxe.patch`;
 * the ACPI CPU namespace repair in `acpi/SSDT-BHYVE-CPU.dsl`, which defines
   four `Processor` objects under an `ACPI0010` device;
 * a four-vCPU, one-socket/two-core/two-thread bhyve topology, 12 GiB guest
   memory, `uefi-custom`, AHCI disks, `virtio-net`, loopback-only VNC, and
   `wired_memory=no`; and
 * AMD_Vanilla commit `eaf52ef292abf4ebec899df6d48626569ba50cc6`, OpenCore
-  1.0.6, and `ProvideCurrentCpuInfo` as inputs to the owner-built OpenCore
-  configuration.
+  release `1.0.6` (the upstream release page identifies signed commit prefix
+  `64e3b58`), and `ProvideCurrentCpuInfo` as inputs to the owner-built
+  OpenCore configuration.
 
 The final observed custom `BHYVE_CODE.fd` was 3,653,632 bytes with SHA-256
 `93a38b9ef4b3ab81fde9f240d50272dd14ba21204d92a9c80357ab0688cae3b8`. The
@@ -149,15 +150,17 @@ here.
 Publication is **not ready** for an exact, one-command public release. The
 following gaps are explicit:
 
-* no immutable OpenCore source commit for the observed 1.0.6 image was
-  preserved;
+* the official OpenCore `1.0.6` release and signed commit prefix `64e3b58`
+  are now independently identified, but the full 40-hex commit and exact
+  release-asset digest were not preserved, so the observed image still cannot
+  be tied to an immutable source/archive hash;
 * the clean EDK2 toolchain version and complete recursive submodule closure
   were not retained together, so the known-good firmware digest is a reference
   rather than a reproducible artifact claim;
 * AMD_Vanilla patch bytes were preserved locally but are intentionally not
   redistributed because they are kernel patch data; the preserved AMD tree
-  inventory did not include a license file, so its licensing must be verified
-  before publication; and
+  and official upstream inventory do not expose a license file, so its
+  licensing must be verified before publication; and
 * the final OpenCore plist, guest disk, UEFI variables, custom firmware, and
   host vm-bhyve state are intentionally excluded from this source recipe.
 

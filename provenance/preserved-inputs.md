@@ -18,12 +18,14 @@ machine state are not copied here.
 
 * PotemkinCo/macos-amd-bhyve: observed main tree object
   `1992222abfa1a320c45a39131baeefcb3b7f0821`; local checkout absent.
-* Tianocore EDK2: `https://github.com/tianocore/edk2.git`, commit
+* Tianocore EDK2: release tag `edk2-stable202508`, commit
   `d46aa46c8361194521391aa581593e556c707c6e`.
-* AMD_Vanilla: commit `eaf52ef292abf4ebec899df6d48626569ba50cc6`; its patch
-  bytes are not staged in this repository.
-* OpenCore: version 1.0.6 was observed, but no immutable source commit was
-  retained.
+* AMD_Vanilla: official commit
+  `eaf52ef292abf4ebec899df6d48626569ba50cc6`; its patch bytes are not staged
+  in this repository.
+* OpenCore: official release tag `1.0.6`, whose release page identifies the
+  signed commit prefix `64e3b58`; the full 40-hex commit and release-asset
+  digest were not retained.
 * FreeBSD package observations: `vm-bhyve-1.7.4`, `bhyve-firmware-1.0_2`,
   `edk2-bhyve-g202508_2`, and `qemu-tools-11.0.2`.
 
@@ -36,3 +38,7 @@ The staged EDK2 patch is newline-normalized for portable Git application; its
 content is the preserved isolated patch, while the original evidence byte hash
 is retained in the audit evidence. The SSDT source is byte-identical to the
 preserved source.
+
+The official license/provenance references and redistribution decisions are
+indexed in `licenses/UPSTREAM-LICENSE-REFERENCES.md` and in the local web
+research evidence under `runtime/results/2026-08-23-macos-amd-bhyve-product.01/evidence/0017-*`.
