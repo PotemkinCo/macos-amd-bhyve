@@ -1,0 +1,16 @@
+# Owner-provided inputs, mutable guest state, and build output.
+work/
+build/
+downloads/
+private/
+*.img
+*.fd
+*.raw
+*.qcow2
+*.dmg
+*.iso
+*.zip
+*.tar
+*.tar.gz
+*.log
+.DS_Store

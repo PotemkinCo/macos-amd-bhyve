@@ -1,0 +1,17 @@
+diff --git a/SecurityPkg/Library/DxeImageVerificationLib/DxeImageVerificationLib.c b/SecurityPkg/Library/DxeImageVerificationLib/DxeImageVerificationLib.c
+index 46d39cd..d0f67ca 100644
+--- a/SecurityPkg/Library/DxeImageVerificationLib/DxeImageVerificationLib.c
++++ b/SecurityPkg/Library/DxeImageVerificationLib/DxeImageVerificationLib.c
+@@ -1707,9 +1707,9 @@ DxeImageVerificationHandler (
+   //
+   // Sanity check
+   //
+-  if (File == NULL) {
+-    return EFI_INVALID_PARAMETER;
+-  }
++  if ((File == NULL) && (FileBuffer == NULL)) {
++    return EFI_INVALID_PARAMETER;
++  }
+ 
+   //
+   // Check the image type and get policy setting.

@@ -1,0 +1,1 @@
+This package has a single license: BSD3CLAUSE (BSD 3-clause New or Revised License).
