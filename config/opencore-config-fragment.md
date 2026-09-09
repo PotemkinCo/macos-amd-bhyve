@@ -23,9 +23,9 @@ the matching `ocvalidate` binary before installing the image:
   `SystemSerialNumber`, and `SystemUUID`; use a generic supported product name
   only after the owner reviews its licensing and compatibility implications.
 * `NVRAM -> Add -> 7C436110-AB2A-4BBB-A880-FE41995C9F82`: use the proven
-  serial-capable bring-up arguments
-  `-v keepsyms=1 amfi_get_out_of_my_way=1 tlbto_us=0 vti=9 serial=7 debug=0x2 pci=0x1 npci=0x2000`.
-  These are diagnostic bring-up arguments, not a security recommendation.
+  serial-capable bring-up arguments selected by the operator. Keep
+  security-relaxing debug flags and host-specific overrides out of shared or
+  published configurations.
 * `Misc -> Boot`: use `ShowPicker=false` only for an owner-approved headless
   baseline; keep a recovery copy with a visible picker.
 

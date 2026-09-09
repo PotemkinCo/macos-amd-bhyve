@@ -12,7 +12,7 @@ patch data.
 * Tianocore EDK II `edk2-stable202508` / commit
   `d46aa46c8361194521391aa581593e556c707c6e`: the official project states
   that most content uses BSD-2-Clause-Patent, with OvmfPkg and git submodules
-  subject to additional licenses. This staging tree does not contain the
+  subject to additional licenses. This public source tree does not contain the
   complete EDK2 source or dependency closure; `licenses/EDK2-BHYVE-BSD3.txt`
   is only the preserved FreeBSD package notice.
   <https://github.com/tianocore/edk2/releases/tag/edk2-stable202508>

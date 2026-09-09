@@ -1,17 +1,16 @@
 # macOS on AMD bhyve — source recipe
 
-This staging tree contains only a reproducible recipe, source patches, and
+This public repository contains only a reproducible recipe, source patches, and
 sanitized configuration guidance for a headless, non-Metal x86_64 macOS guest
 on FreeBSD 15.1 and AMD bhyve. It contains no Apple installer/media, guest
 disk, OpenCore image, firmware binary, UEFI variables, host key, credential,
 serial number, UUID, MAC address from a real host, or raw machine log.
 
-The observed public repository is `PotemkinCo/macos-amd-bhyve`. No local
-checkout was present when this tree was prepared. The preserved repository
-tree contained only its Apache-2.0 `LICENSE`; its observed tree object was
-`1992222abfa1a320c45a39131baeefcb3b7f0821` and its license blob was
-`261eeb9e9f8b2b4b0d119366dda99c6fd7d35c64`. This staging tree is not a clone
-and has not been pushed or connected to GitHub.
+The project-authored recipe is licensed under Apache 2.0. Upstream
+dependencies retain their own licenses and are referenced in `licenses/`.
+Apple software, firmware, OpenCore images, AMD kernel patch bytes, guest
+disks, UEFI variables, and host state are deliberately outside the public
+distribution boundary.
 
 ## What is reproducible
 
@@ -59,8 +58,8 @@ OpenCore configuration.
 
 ## Fast path on an owner-controlled FreeBSD host
 
-All mutating actions below are explicit owner-run commands. They were not run
-while preparing this staging tree.
+All mutating actions below are explicit owner-run commands. They are not run
+by repository publication or by the read-only verification helper.
 
 1. Create a clean EDK2 checkout at the pinned commit and build the custom
    firmware:
@@ -99,8 +98,8 @@ while preparing this staging tree.
 
    ```sh
    VM_NAME=macos-amd-bhyve \
-   DATASTORE=/path/to/vm-bhyve-datastore \
-   CUSTOM_FIRMWARE=/path/to/BHYVE_CODE.fd \
+   DATASTORE="$VM_DATASTORE" \
+   CUSTOM_FIRMWARE="$BUILD_DIR/BHYVE_CODE.fd" \
    ./scripts/install.sh --apply
    ```
 
@@ -112,9 +111,9 @@ while preparing this staging tree.
    VM_NAME=macos-amd-bhyve DATASTORE=/path/to/vm-bhyve-datastore \
    ./scripts/verify-install.sh
 
-   SSH_USER=... SSH_HOST=... SSH_KEY=/owner/private/ssh_key \
-   SSH_KNOWN_HOSTS=/owner/private/known_hosts \
-   VM_NAME=macos-amd-bhyve DATASTORE=/path/to/vm-bhyve-datastore \
+   SSH_USER=... SSH_HOST=... SSH_KEY="$SSH_PRIVATE_KEY_FILE" \
+   SSH_KNOWN_HOSTS="$SSH_KNOWN_HOSTS_FILE" \
+   VM_NAME=macos-amd-bhyve DATASTORE="$VM_DATASTORE" \
    ./scripts/verify-reboot.sh --apply
    ```
 
@@ -140,15 +139,15 @@ BACKUP_DIR=/path/to/inspected/backup \
 Rollback never deletes the guest disk or UEFI variables. It restores only the
 configuration and custom firmware files saved by `install.sh`.
 
-## Preserved evidence and publication status
+## Public boundary and limitations
 
 The source and hashes were derived from the owner-only retrospective and
 protected evidence bundle dated 2026-08-23. The exact sources are indexed in
 `provenance/preserved-inputs.md`; no raw logs or machine-state files are copied
 here.
 
-Publication is **not ready** for an exact, one-command public release. The
-following gaps are explicit:
+This is publishable as a source-only recipe, but it is not an exact,
+one-command public release. The following limitations are explicit:
 
 * the official OpenCore `1.0.6` release and signed commit prefix `64e3b58`
   are now independently identified, but the full 40-hex commit and exact
@@ -165,5 +164,6 @@ following gaps are explicit:
   host vm-bhyve state are intentionally excluded from this source recipe.
 
 The missing original bytes are therefore not silently replaced by inferred
-values. This tree is a clean owner-only staging recipe and a precise handoff
-for resolving those publication blockers.
+values. Run `./scripts/check-public-tree.sh` before committing changes. A
+successful check confirms the distribution boundary; it does not prove that
+the guest will boot on every FreeBSD, bhyve, or AMD host.

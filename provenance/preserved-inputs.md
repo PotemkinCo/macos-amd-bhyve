@@ -1,7 +1,7 @@
 # Preserved publishable inputs
 
-This index records only safe source/recipe/provenance inputs used by the local
-staging tree. The source evidence remains in ignored owner-only storage; raw
+This index records only safe source/recipe/provenance inputs used by the public
+source tree. The source evidence remains in ignored owner-only storage; raw
 logs, firmware, OpenCore images, UEFI variables, guest disks, and private
 machine state are not copied here.
 
@@ -16,8 +16,8 @@ machine state are not copied here.
 
 ## Upstream pins
 
-* PotemkinCo/macos-amd-bhyve: observed main tree object
-  `1992222abfa1a320c45a39131baeefcb3b7f0821`; local checkout absent.
+* PotemkinCo/macos-amd-bhyve: earlier base tree object
+  `1992222abfa1a320c45a39131baeefcb3b7f0821`.
 * Tianocore EDK2: release tag `edk2-stable202508`, commit
   `d46aa46c8361194521391aa581593e556c707c6e`.
 * AMD_Vanilla: official commit

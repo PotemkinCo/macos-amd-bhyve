@@ -19,6 +19,13 @@ fi
 [ -f "$VM_CONFIG" ] || { echo "VM_CONFIG is missing: $VM_CONFIG" >&2; exit 2; }
 [ -f "$SSDT_AML" ] || { echo "SSDT_AML is missing: $SSDT_AML" >&2; exit 2; }
 [ -d "$DATASTORE/.config" ] || { echo "DATASTORE/.config must already exist" >&2; exit 2; }
+if grep -q 'REPLACE_' "$VM_CONFIG"; then
+    echo "VM_CONFIG still contains REPLACE_ placeholders" >&2
+    exit 2
+fi
+if [ -n "$OPENCORE_IMAGE" ]; then
+    [ -f "$OPENCORE_IMAGE" ] && [ ! -L "$OPENCORE_IMAGE" ] || { echo "OPENCORE_IMAGE must be a regular file" >&2; exit 2; }
+fi
 
 if command -v vm >/dev/null 2>&1 && vm info "$VM_NAME" 2>/dev/null | grep -Eiq 'running|active'; then
     echo "refusing install while VM is running" >&2
@@ -45,7 +52,6 @@ install -m 600 "$CUSTOM_FIRMWARE" "$DATASTORE/.config/BHYVE_UEFI.fd"
 install -m 600 "$VM_CONFIG" "$vm_root/$VM_NAME.conf"
 install -m 600 "$SSDT_AML" "$vm_root/SSDT-BHYVE-CPU.aml"
 if [ -n "$OPENCORE_IMAGE" ]; then
-    [ -f "$OPENCORE_IMAGE" ] && [ ! -L "$OPENCORE_IMAGE" ] || { echo "OPENCORE_IMAGE must be a regular file" >&2; exit 2; }
     install -m 600 "$OPENCORE_IMAGE" "$vm_root/$(basename "$OPENCORE_IMAGE")"
 fi
 
