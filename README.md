@@ -12,6 +12,19 @@ Apple software, firmware, OpenCore images, AMD kernel patch bytes, guest
 disks, UEFI variables, and host state are deliberately outside the public
 distribution boundary.
 
+## Intended use and legal notice
+
+This project is provided for personal educational, research, and
+interoperability-testing use only. Use macOS only when you have lawfully
+obtained it and hold the permissions required by the applicable Apple
+software license and by every third-party input used with this recipe. A
+macOS purchase or download does not by itself grant permission to run macOS
+on non-Apple hardware or to redistribute Apple software. No Apple software,
+installer, recovery media, or guest disk is distributed by this repository.
+You are responsible for reviewing the applicable terms, preserving required
+attribution, and complying with local law before using or redistributing any
+input.
+
 ## What is reproducible
 
 The retained supervised run proved the following implementation facts:
