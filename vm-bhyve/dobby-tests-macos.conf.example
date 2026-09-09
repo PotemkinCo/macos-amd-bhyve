@@ -1,0 +1,32 @@
+# Public four-vCPU template. The assembler replaces the UUID and MAC address.
+# Replace the switch placeholder in the private output before starting the VM.
+
+loader="uefi-custom"
+graphics="yes"
+graphics_listen="127.0.0.1"
+graphics_port="5900"
+graphics_res="1920x1080"
+xhci_mouse="yes"
+
+cpu="4"
+cpu_sockets="1"
+cpu_cores="2"
+cpu_threads="2"
+memory="12G"
+wired_memory="no"
+
+ahci_device_limit="8"
+# e1000 is supported by macOS without installing an unsigned guest driver.
+network0_type="e1000"
+network0_switch="REPLACE_WITH_PRIVATE_VM_SWITCH"
+network0_mac="REPLACE_WITH_GENERATED_MAC"
+
+disk0_type="ahci-hd"
+disk0_name="opencore.img"
+disk1_type="ahci-hd"
+disk1_name="macos-system.raw"
+
+utctime="no"
+uuid="REPLACE_WITH_GENERATED_UUID"
+uefi_vars="yes"
+bhyve_options="-w -o x86.vmexit_on_pause=false"

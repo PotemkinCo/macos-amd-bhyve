@@ -1,0 +1,114 @@
+{
+  "schema": 2,
+  "purpose": "Pinned provenance for the ready-to-assemble AMD bhyve recipe",
+  "apple_material_redistributed": false,
+  "payload_hashes": "provenance/payload.sha256",
+  "firmware": {
+    "bhyve_uefi": {
+      "path": "firmware/BHYVE_UEFI.fd",
+      "sha256": "93a38b9ef4b3ab81fde9f240d50272dd14ba21204d92a9c80357ab0688cae3b8",
+      "source": "Known-good firmware retained from the working FreeBSD bhyve host",
+      "source_recipe": {
+        "repository": "https://github.com/tianocore/edk2.git",
+        "commit": "d46aa46c8361194521391aa581593e556c707c6e",
+        "patch": "patches/edk2/0001-bhyve-filebuffer-image-verification.patch",
+        "architecture": "X64",
+        "target": "RELEASE",
+        "toolchain": "GCC5",
+        "platform": "OvmfPkg/Bhyve/BhyveX64.dsc"
+      },
+      "bit_identical_rebuild_proven": false,
+      "license": "BSD-2-Clause-Patent",
+      "license_file": "LICENSES/EDK2-BSD-2-Clause-Patent.txt"
+    },
+    "bhyve_uefi_vars": {
+      "path": "firmware/BHYVE_UEFI_VARS.fd",
+      "sha256": "5d2ac383371b408398accee7ec27c8c09ea5b74a0de0ceea6513388b15be5d1e",
+      "source": "FreeBSD package edk2-bhyve-g202508_2",
+      "mutable": false,
+      "usage": "Copy once per VM; never modify or share the repository template",
+      "license": "BSD-2-Clause-Patent",
+      "license_file": "LICENSES/EDK2-BSD-2-Clause-Patent.txt"
+    }
+  },
+  "opencore": {
+    "version": "1.0.6",
+    "release_url": "https://github.com/acidanthera/OpenCorePkg/releases/download/1.0.6/OpenCore-1.0.6-RELEASE.zip",
+    "release_sha256": "3c34069ac72ef97f3602c119dcd4ba22c185251356c3094bff0c92dfb6ad0f28",
+    "license": "BSD-3-Clause",
+    "license_file": "LICENSES/OpenCorePkg-BSD-3-Clause.txt",
+    "redistributed": true
+  },
+  "kexts": [
+    {
+      "name": "Lilu",
+      "version": "1.6.8",
+      "release_url": "https://github.com/acidanthera/Lilu/releases/download/1.6.8/Lilu-1.6.8-RELEASE.zip",
+      "release_sha256": "426dcab73061231f1578afb63059bdc72ab24994204906f030f70e65f769f962",
+      "license": "BSD-3-Clause",
+      "license_file": "LICENSES/Lilu-BSD-3-Clause.txt",
+      "redistributed": true
+    },
+    {
+      "name": "VirtualSMC",
+      "version": "1.3.3",
+      "release_url": "https://github.com/acidanthera/VirtualSMC/releases/download/1.3.3/VirtualSMC-1.3.3-RELEASE.zip",
+      "release_sha256": "75f6d0504540b91cf6329be910d1b28784532ded225c311577a06d4df107d4c7",
+      "license": "BSD-3-Clause",
+      "license_file": "LICENSES/VirtualSMC-BSD-3-Clause.txt",
+      "redistributed": true
+    },
+    {
+      "name": "WhateverGreen",
+      "version": "1.6.7",
+      "release_url": "https://github.com/acidanthera/WhateverGreen/releases/download/1.6.7/WhateverGreen-1.6.7-RELEASE.zip",
+      "release_sha256": "16834950b2fcebd2dcdc202067a3c82303805001dc743b5b49be18b49f967dc7",
+      "license": "BSD-3-Clause",
+      "license_file": "LICENSES/WhateverGreen-BSD-3-Clause.txt",
+      "redistributed": true
+    },
+    {
+      "name": "CryptexFixup",
+      "version": "1.0.1",
+      "release_url": "https://github.com/acidanthera/CryptexFixup/releases/download/1.0.1/CryptexFixup-1.0.1-RELEASE.zip",
+      "release_sha256": "a897009452bbc969c709e0d1edfc00fbf6207249e4df80bd457ce31cf0882913",
+      "license": "BSD-3-Clause",
+      "license_file": "LICENSES/CryptexFixup-BSD-3-Clause.txt",
+      "redistributed": true
+    },
+    {
+      "name": "MCEReporterDisabler",
+      "version": "0.5",
+      "source": "opencore/EFI/OC/Kexts/MCEReporterDisabler.kext/Contents/Info.plist",
+      "source_sha256": "231da3ffdd09ebced832a0e05ab98da48f16f84f138f9be3062324a6905d94c7",
+      "license": "GPL-2.0-only",
+      "license_evidence": "The complete plist-only work identifies itself as Copyright (GPLv2) by RehabMan",
+      "license_file": "LICENSES/GPL-2.0.txt",
+      "redistributed": true
+    }
+  ],
+  "amd_vanilla": {
+    "repository": "https://github.com/AMD-OSX/AMD_Vanilla.git",
+    "commit": "eaf52ef292abf4ebec899df6d48626569ba50cc6",
+    "patches_url": "https://raw.githubusercontent.com/AMD-OSX/AMD_Vanilla/eaf52ef292abf4ebec899df6d48626569ba50cc6/patches.plist",
+    "patches_sha256": "4bc820109b3d020c3c547fa23c49e0098e4f4a2c625ed6184dd54e390e84e1ab",
+    "license_status": "No licence file or other redistribution grant was present at the pinned revision",
+    "redistributed": false,
+    "acquisition": "Downloaded from the copyright holder's repository and hash-verified during local assembly"
+  },
+  "acpi": {
+    "source": "acpi/SSDT-BHYVE-CPU.dsl",
+    "source_sha256": "a858e947ace143768e2a3b825d6fe97c8c7d7cafe79be2fc0dae844c35965264",
+    "reference_aml_path": "opencore/EFI/OC/ACPI/SSDT-BHYVE-CPU.aml",
+    "reference_aml_sha256": "67174f18544899ce31f38b02cc6fc39bec7e38584ffbc351561fa59b52faee36",
+    "reference_aml_is_redistributed": true,
+    "compiler": "ACPICA iasl supplied by the operator"
+  },
+  "excluded_inputs": [
+    "macOS installer or recovery media",
+    "Apple firmware or OSK material",
+    "installed macOS disk or snapshot",
+    "live or shared UEFI variable stores",
+    "owner-specific configuration, logs, credentials, and network state"
+  ]
+}

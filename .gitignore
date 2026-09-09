@@ -1,28 +1,39 @@
-# Owner-provided inputs, mutable guest state, and build output.
-work/
-build/
-downloads/
-private/
-*.img
-*.aml
-*.fd
-*.efi
-*.kext
-*.raw
-*.qcow2
+# Local build/output directories (the pinned payload under firmware/ and
+# opencore/ is intentionally versioned).
+/build/
+/out/
+
+# VM media and mutable state
 *.dmg
+*.img
 *.iso
 *.nvram
+*.qcow2
+*.raw
 *.vars
-*.zip
-*.tar
-*.tar.gz
-*.tgz
-*.gz
-*.7z
-*.bin
-*.log
+
+# Runtime diagnostics and captures
 *.cap
+*.log
 *.pcap
 *.png
+
+# Archives and downloaded payloads
+*.7z
+*.bin
+*.gz
+*.tar
+*.tgz
+*.zip
+
+# Host-local vm-bhyve configuration and OpenCore state
+vm-bhyve/*.conf
+vm-bhyve/EFI/
+vm-bhyve/OpenCore/
+vm-bhyve/OC/
+
+# Local editor and operating-system metadata
 .DS_Store
+*.swp
+__pycache__/
+*.pyc

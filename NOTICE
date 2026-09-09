@@ -1,0 +1,40 @@
+Dobby macOS AMD bhyve recipe
+
+Copyright 2026 Alexander Potemkin
+
+Project-authored documentation, scripts, configuration, ACPI source, and the
+isolated EDK2 patch are offered under the Apache License, Version 2.0. See
+LICENSE.
+
+Bundled third-party payloads retain their upstream terms:
+
+* TianoCore EDK2-derived BHYVE_UEFI.fd and BHYVE_UEFI_VARS.fd:
+  BSD-2-Clause-Patent; see LICENSES/EDK2-BSD-2-Clause-Patent.txt.
+* Acidanthera OpenCorePkg 1.0.6, including OpenCore, EFI drivers, the SSDT-EC
+  binary, macserial, and ocvalidate: BSD-3-Clause; see
+  LICENSES/OpenCorePkg-BSD-3-Clause.txt.
+* Lilu 1.6.8: BSD-3-Clause; see LICENSES/Lilu-BSD-3-Clause.txt.
+* VirtualSMC 1.3.3: BSD-3-Clause; see
+  LICENSES/VirtualSMC-BSD-3-Clause.txt.
+* WhateverGreen 1.6.7: BSD-3-Clause; see
+  LICENSES/WhateverGreen-BSD-3-Clause.txt.
+* CryptexFixup 1.0.1: BSD-3-Clause; see
+  LICENSES/CryptexFixup-BSD-3-Clause.txt.
+* MCEReporterDisabler 0.5 is a plist-only work whose complete included source
+  identifies itself as GPLv2 by RehabMan; see LICENSES/GPL-2.0.txt.
+
+AMD_Vanilla patch data is not distributed. The pinned upstream revision does
+not include an explicit licence or redistribution grant. The local assembler
+downloads and verifies it directly from its rightsholder's repository. Do not
+publish generated bundles containing those patch bytes without permission.
+
+Apple macOS, recovery media, Apple firmware, OSK material, installed systems,
+and mutable VM state are not part of this repository and must not be
+redistributed by it. This notice grants no right to use Apple trademarks or
+Apple software.
+
+This repository is intended for personal educational use only. Use macOS only
+if it has been lawfully obtained, including any required purchase, and comply
+with the applicable Apple software licence. Purchasing or downloading macOS
+does not by itself grant permission to run it on non-Apple hardware or to
+redistribute Apple software.
